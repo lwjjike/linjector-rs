@@ -80,7 +80,16 @@ impl Injector {
             utils::verify_elf_file(self.file_path.as_str())?;
         }
 
-        let tmp_file_path = utils::copy_file_to_tmp(self.file_path.as_str())?;
+        let file_path_absolute = match std::path::Path::new(self.file_path.as_str()).canonicalize() {
+            Ok(path) => path,
+            Err(e) => {
+                error!("Error getting file path: {}", e);
+                return Err(InjectionError::FileError)
+            }
+        };
+        let tmp_file_path = String::from(file_path_absolute.to_str().unwrap());
+
+        // let tmp_file_path = utils::copy_file_to_tmp(self.file_path.as_str())?;
         utils::fix_file_context(tmp_file_path.as_str())?;
         utils::fix_file_permissions(tmp_file_path.as_str())?;
         utils::print_file_hexdump(tmp_file_path.as_str())?;

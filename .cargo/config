@@ -1,2 +1,5 @@
 [build]
 target = "aarch64-linux-android"
+
+[target.aarch64-linux-android]
+linker = "D:/enviroment/android-sdk_r24.4.1-windows/android-sdk-windows/ndk/26.1.10909125/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android33-clang.cmd"
