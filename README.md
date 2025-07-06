@@ -1,4 +1,5 @@
 # linjector-rs
+一种比ptrace更好的so注入工具，魔改了linjector-cli，隐藏了其maps文件特征，需将so文件拷贝到app的私有目录中(例如: /data/app/~~K9AspQJE-ugzmrCq_sHOGA==/com.example.frida_gum_test-0nw_wYKUVlLFXGJxOJSqNA==/lib/arm64/libfridagumtest.so)，然后在data/local/tmp目录中通过linjector进行注入
 
 Android port of [linux_injector](https://github.com/namazso/linux_injector). Library injection using /proc/mem, without ptrace. Only aarch64 is supported.
 
